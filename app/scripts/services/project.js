@@ -4,6 +4,7 @@ angular
   .module('tangentDemoApp')
   .factory('ProjectService', ProjectService);
 
+ProjectService.$inject = ['$http', 'ServiceUrls'];
 function ProjectService($http, ServiceUrls) {
   var service = {};
 

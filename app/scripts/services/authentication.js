@@ -1,3 +1,4 @@
+// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 'use strict';
 
 angular
@@ -16,11 +17,11 @@ function AuthenticationService($http, $cookies, $rootScope, $timeout, ServiceUrl
   function Login(username, password, callback) {
     $http.post(ServiceUrls.UserService + 'api-token-auth/', { username: username, password: password })
       .then(
-        function (response) {
+        function(response) {
           response.success = true;
           callback(response);
         },
-        function (response) {
+        function(response) {
           if (response.data && response.data.non_field_errors && response.data.non_field_errors.length) {
             response.message = response.data.non_field_errors[0];
           } else {

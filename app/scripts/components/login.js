@@ -1,3 +1,4 @@
+/* jshint unused: false */
 'use strict';
 
 angular.module('tangentDemoApp')
@@ -7,6 +8,7 @@ angular.module('tangentDemoApp')
     controllerAs: 'vm'
   });
 
+LoginCtrl.$inject = ['$location', 'AuthenticationService', 'FlashService'];
 function LoginCtrl($location, AuthenticationService, FlashService) {
   var vm = this;
 
@@ -26,7 +28,7 @@ function LoginCtrl($location, AuthenticationService, FlashService) {
   function init() {
     // Reset the login status
     AuthenticationService.ClearCredentials();
-  };
+  }
 
   init();
 }

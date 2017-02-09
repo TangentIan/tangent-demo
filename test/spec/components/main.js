@@ -9,7 +9,7 @@ describe('Component: Main', function () {
     controller,
     httpMock,
     ProjectService,
-    FlashService;;
+    FlashService;
 
   beforeEach(inject(function($rootScope, $compile, $httpBackend, $q, _ProjectService_, _FlashService_){
     ProjectService = _ProjectService_;

@@ -1,9 +1,11 @@
+/* jshint unused: false, shadow: true */
 'use strict';
 
 angular
   .module('tangentDemoApp')
   .factory('FlashService', FlashService);
 
+FlashService.$inject = ['$rootScope'];
 function FlashService($rootScope) {
   var service = {};
 

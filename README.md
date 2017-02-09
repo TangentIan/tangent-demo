@@ -1,5 +1,7 @@
 # Tangent demo
 
+[Access the demo](https://jackvz.github.io/tangent-demo/)
+
 The project is built with: 
 
   - [Yeoman](http://yeoman.io/) [Angular generator](https://github.com/yeoman/generator-angular)
@@ -17,3 +19,7 @@ The project is built with:
 ### Testing
 
 - Run `grunt test`
+
+### Building
+
+- Run `grunt` to build the webapp for production. The deployment folder is /dist

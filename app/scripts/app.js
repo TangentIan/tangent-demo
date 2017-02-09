@@ -1,13 +1,6 @@
+/* jshint unused: false */
 'use strict';
 
-/**
- * @ngdoc overview
- * @name tangentDemoApp
- * @description
- * # tangentDemoApp
- *
- * Main module of the application.
- */
 angular
   .module('tangentDemoApp', [
     'ngAnimate',
@@ -20,6 +13,7 @@ angular
   .config(config)
   .run(run);
 
+config.$inject = ['$routeProvider'];
 function config($routeProvider) {
   $routeProvider
     .when('/', {
@@ -33,6 +27,7 @@ function config($routeProvider) {
     });
 }
 
+run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
 function run($rootScope, $location, $cookies, $http) {
   // Keep the user logged in
   $rootScope.globals = $cookies.getObject('globals') || {};

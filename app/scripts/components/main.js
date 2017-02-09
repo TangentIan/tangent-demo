@@ -7,6 +7,7 @@ angular.module('tangentDemoApp')
     controllerAs: 'vm'
   });
 
+MainCtrl.$inject = ['$rootScope', 'ProjectService', 'FlashService'];
 function MainCtrl($rootScope, ProjectService, FlashService) {
   var vm = this;
 
@@ -30,7 +31,7 @@ function MainCtrl($rootScope, ProjectService, FlashService) {
 
   function deleteProject(id) {
     ProjectService.Delete(id)
-      .then(function() {
+      .then(function(response) {
         if (response.success) {
           loadAllProjects();
         } else {
