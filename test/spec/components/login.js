@@ -6,14 +6,17 @@ describe('Component: Login', function () {
   beforeEach(module('tangentDemoApp'));
 
   var scope,
-    controller;
+    element,
+    controller,
+    httpMock;
 
-  // Initialize the component and a mock scope
-  beforeEach(inject(function ($componentController, $rootScope) {
+  beforeEach(inject(function($rootScope, $compile, $httpBackend){
     scope = $rootScope.$new();
-    controller = $componentController('loginComponent', {
-      $scope: scope
-    });
+    element = angular.element('<login-component></login-component>');
+    element = $compile(element)(scope);
+    scope.$apply();
+    controller = element.controller('loginComponent');
+    httpMock = $httpBackend;
   }));
 
   it('should attach a function login to the controller', function () {
@@ -22,5 +25,13 @@ describe('Component: Login', function () {
 
   it('should attach a function init to the controller', function () {
     expect(controller.init).toBeDefined();
+  });
+
+  it('should call the login function when the form is submitted', function () {
+    var form = element.find('form');
+    httpMock.expectPOST(/.*?/).respond();
+    spyOn(controller, 'login');
+    form.triggerHandler('submit');
+    expect(controller.login).toHaveBeenCalled();
   });
 });
