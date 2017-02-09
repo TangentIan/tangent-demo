@@ -14,7 +14,7 @@ function LoginCtrl($location, AuthenticationService, FlashService) {
     vm.dataLoading = true;
     AuthenticationService.Login(vm.username, vm.password, function (response) {
       if (response.success) {
-        AuthenticationService.SetCredentials(vm.username, vm.password);
+        AuthenticationService.SetCredentials(vm.username, response.data.token);
         $location.path('/');
       } else {
         FlashService.Error(response.message);
@@ -23,10 +23,10 @@ function LoginCtrl($location, AuthenticationService, FlashService) {
     });
   };
 
-  vm.init = function() {
+  function init() {
     // Reset the login status
     AuthenticationService.ClearCredentials();
   };
 
-  vm.init();
+  init();
 }

@@ -1,3 +1,22 @@
-<div class="jumbotron">
-  <h1>Welcome</h1>
+<div class="row">
+  <div class="col-md-10"><h1>Hi {{vm.username}}</h1></div>
+  <p class="col-md-2 text-right"><a href="#!/login" class="btn btn-default btn-logout">Logout</a></p>
+</div>
+<h3>Projects</h3>
+<div class="list-group">
+  <div class="list-group-item" ng-repeat="project in vm.allProjects">
+    <h4 class="list-group-item-heading">{{project.title}}</h4>
+    <p class="list-group-item-text">
+      <dl class="dl-horizontal">
+        <dt>Description</dt><dd>{{project.description}}</dd>
+        <dt>Start date</dt><dd>{{project.start_date}}</dd>
+        <dt>End date</dt><dd>{{project.end_date}}</dd>
+        <dt>Active</dt><dd><input type="checkbox" ng-model="project.is_active" disabled></dd>
+        <dt>Billable</dt><dd><input type="checkbox" ng-model="project.is_billable" disabled></dd>
+      </dl>
+
+      <!-- @todo: -<a>Edit</a>-->
+      <!-- @todo: -<a ng-click="vm.deleteProject(project.id)">Delete</a>-->
+    </p>
+  </div>
 </div>

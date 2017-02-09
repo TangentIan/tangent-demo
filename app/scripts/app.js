@@ -37,7 +37,7 @@ function run($rootScope, $location, $cookies, $http) {
   // Keep the user logged in
   $rootScope.globals = $cookies.getObject('globals') || {};
   if ($rootScope.globals.currentUser) {
-    $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
+    $http.defaults.headers.common.Authorization = $rootScope.globals.currentUser.authdata;
   }
 
   $rootScope.$on('$locationChangeStart', function (event, next, current) {

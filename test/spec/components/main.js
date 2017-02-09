@@ -2,22 +2,47 @@
 
 describe('Component: Main', function () {
 
-  // load the component's module
   beforeEach(module('tangentDemoApp'));
 
   var scope,
     element,
-    controller;
+    controller,
+    httpMock,
+    ProjectService,
+    FlashService;;
 
-  beforeEach(inject(function($rootScope, $compile){
+  beforeEach(inject(function($rootScope, $compile, $httpBackend, $q, _ProjectService_, _FlashService_){
+    ProjectService = _ProjectService_;
+    FlashService = _FlashService_;
+    spyOn(ProjectService, 'GetAll').and.callFake(function() {
+      var deferred = $q.defer();
+      return deferred.promise;
+    });
     scope = $rootScope.$new();
+    $rootScope.globals = {
+      currentUser: {
+        username: 'username',
+        authdata: 'token'
+      }
+    };
     element = angular.element('<main-component></main-component>');
     element = $compile(element)(scope);
     scope.$apply();
     controller = element.controller('mainComponent');
+    httpMock = $httpBackend;
   }));
 
-  it('should attach a list of awesomeThings to the controller', function () {
-    expect(controller.awesomeThings.length).toBe(0);
+  // Unit tests
+
+  it('should add username to the controller', function () {
+    expect(controller.username).toBeDefined();
   });
+
+  // Integration tests
+
+  it('should call the project service\'s get all method on instantiation', function () {
+    httpMock.expectGET(/.*?/).respond();
+    expect(ProjectService.GetAll).toHaveBeenCalled();
+  });
+
 });

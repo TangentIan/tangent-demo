@@ -2,7 +2,6 @@
 
 describe('Service: Flash', function () {
 
-  // load the component's module
   beforeEach(module('tangentDemoApp'));
 
   var service;
@@ -15,11 +14,11 @@ describe('Service: Flash', function () {
     expect(!!service).toBe(true);
   });
 
-  it('should have a success function', function () {
+  it('should have a success method', function () {
     expect(service.Success).toBeDefined();
   });
 
-  it('should have an error function', function () {
+  it('should have an error method', function () {
     expect(service.Error).toBeDefined();
   });
 });

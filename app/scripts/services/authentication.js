@@ -1,3 +1,5 @@
+'use strict';
+
 angular
   .module('tangentDemoApp')
   .factory('AuthenticationService', AuthenticationService);
@@ -39,7 +41,7 @@ function AuthenticationService($http, $cookies, $rootScope, $timeout, ServiceUrl
     };
 
     // Set the auth header for HTTP requests
-    $http.defaults.headers.common['Authorization'] = 'Basic ' + token;
+    $http.defaults.headers.common.Authorization = token;
 
     // Store the user details in a globals cookie that keeps a user logged in for 1 week or until they logout
     var cookieExp = new Date();
@@ -50,6 +52,6 @@ function AuthenticationService($http, $cookies, $rootScope, $timeout, ServiceUrl
   function ClearCredentials() {
     $rootScope.globals = {};
     $cookies.remove('globals');
-    $http.defaults.headers.common.Authorization = 'Basic';
+    $http.defaults.headers.common.Authorization = '';
   }
 }

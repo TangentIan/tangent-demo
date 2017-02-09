@@ -2,7 +2,6 @@
 
 describe('Constant: ServiceUrls', function () {
 
-  // load the component's module
   beforeEach(module('tangentDemoApp'));
 
   var constant;

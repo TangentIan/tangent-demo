@@ -3,9 +3,7 @@
 The project is built with: 
 
   - [Yeoman](http://yeoman.io/) [Angular generator](https://github.com/yeoman/generator-angular)
-  - [AngularJS 1.5](angularjs.org) JavaScript framework
-  - [Bower](https://bower.io) for web package management
-  - [EditorConfig](http://editorconfig.org/)
+  - [AngularJS 1.5](angularjs.org)
   
 ### Getting Started
 
@@ -19,7 +17,3 @@ The project is built with:
 ### Testing
 
 - Run `grunt test`
-
-### Building
-
-- Run `grunt` to build the webapp for production. The deployment folder is /dist

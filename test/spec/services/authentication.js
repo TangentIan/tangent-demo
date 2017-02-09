@@ -2,7 +2,6 @@
 
 describe('Service: Authentication', function () {
 
-  // load the component's module
   beforeEach(module('tangentDemoApp'));
 
   var service;
@@ -15,15 +14,15 @@ describe('Service: Authentication', function () {
     expect(!!service).toBe(true);
   });
 
-  it('should have a login function', function () {
+  it('should have a login method', function () {
     expect(service.Login).toBeDefined();
   });
 
-  it('should have a set credentials function', function () {
+  it('should have a set credentials method', function () {
     expect(service.SetCredentials).toBeDefined();
   });
 
-  it('should have a clear credentials function', function () {
+  it('should have a clear credentials method', function () {
     expect(service.ClearCredentials).toBeDefined();
   });
 });

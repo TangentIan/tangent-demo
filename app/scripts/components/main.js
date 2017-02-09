@@ -7,8 +7,42 @@ angular.module('tangentDemoApp')
     controllerAs: 'vm'
   });
 
-function MainCtrl() {
+function MainCtrl($rootScope, ProjectService, FlashService) {
   var vm = this;
 
-  vm.awesomeThings = [];
+  vm.allProjects = [];
+  vm.deleteProject = deleteProject;
+
+  function loadCurrentUser() {
+    vm.username = $rootScope.globals.currentUser.username;
+  }
+
+  function loadAllProjects() {
+    ProjectService.GetAll()
+      .then(function(response) {
+        if (response.success) {
+          vm.allProjects = response.data;
+        } else {
+          FlashService.Error(response.message);
+        }
+      });
+  }
+
+  function deleteProject(id) {
+    ProjectService.Delete(id)
+      .then(function() {
+        if (response.success) {
+          loadAllProjects();
+        } else {
+          FlashService.Error(response.message);
+        }
+      });
+  }
+
+  function init() {
+    loadCurrentUser();
+    loadAllProjects();
+  }
+
+  init();
 }

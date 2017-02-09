@@ -1,3 +1,5 @@
+'use strict';
+
 angular
   .module('tangentDemoApp')
   .factory('FlashService', FlashService);
@@ -23,7 +25,7 @@ function FlashService($rootScope) {
         if (!flash.keepAfterLocationChange) {
           delete $rootScope.flash;
         } else {
-          // only keep for a single location change
+          // Only keep until the location changes
           flash.keepAfterLocationChange = false;
         }
       }
