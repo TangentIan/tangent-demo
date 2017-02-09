@@ -3,5 +3,6 @@
 /.tmp
 /.sass-cache
 /bower_components
+/.grunt/grunt-gh-pages/gh-pages
 *.sublime-project
 *.sublime-workspace
