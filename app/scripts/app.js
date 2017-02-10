@@ -22,6 +22,15 @@ function config($routeProvider) {
     .when('/login', {
       template: '<login-component></login-component>'
     })
+    .when('/projects/add', {
+      template: '<project-add-component></project-add-component>'
+    })
+    .when('/projects/:id/view', {
+      template: '<project-view-component></project-view-component>'
+    })
+    .when('/projects/:id/edit', {
+      template: '<project-edit-component></project-edit-component>'
+    })
     .otherwise({
       redirectTo: '/login'
     });

@@ -28,7 +28,7 @@ body {
 /* Responsive: Widescreen */
 @media screen and (min-width: 992px) {
   .jumbotron {
-    .btn-logout {
+    .btn-logout, .btn-form {
       margin-top: 20px;  
     }
   }

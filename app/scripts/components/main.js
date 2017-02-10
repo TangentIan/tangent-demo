@@ -12,7 +12,6 @@ function MainCtrl($rootScope, ProjectService, FlashService) {
   var vm = this;
 
   vm.allProjects = [];
-  vm.deleteProject = deleteProject;
 
   function loadCurrentUser() {
     vm.username = $rootScope.globals.currentUser.username;
@@ -23,17 +22,6 @@ function MainCtrl($rootScope, ProjectService, FlashService) {
       .then(function(response) {
         if (response.success) {
           vm.allProjects = response.data;
-        } else {
-          FlashService.Error(response.message);
-        }
-      });
-  }
-
-  function deleteProject(id) {
-    ProjectService.Delete(id)
-      .then(function(response) {
-        if (response.success) {
-          loadAllProjects();
         } else {
           FlashService.Error(response.message);
         }

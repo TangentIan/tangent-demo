@@ -21,7 +21,7 @@ function ProjectService($http, ServiceUrls) {
   }
 
   function GetById(id) {
-    return $http.get(ServiceUrls.ProjectService + 'projects/' + id).then(handleSuccess, handleError('Error getting project by id'));
+    return $http.get(ServiceUrls.ProjectService + 'projects/' + id + '/').then(handleSuccess, handleError('Error getting project by id'));
   }
 
   function Create(project) {
@@ -29,11 +29,11 @@ function ProjectService($http, ServiceUrls) {
   }
 
   function Update(project) {
-    return $http.put(ServiceUrls.ProjectService + 'projects/' + project.id, project).then(handleSuccess, handleError('Error updating project'));
+    return $http.put(ServiceUrls.ProjectService + 'projects/' + project.pk + '/', project).then(handleSuccess, handleError('Error updating project'));
   }
 
   function Delete(id) {
-    return $http.delete(ServiceUrls.ProjectService + 'projects/' + id).then(handleSuccess, handleError('Error deleting project'));
+    return $http.delete(ServiceUrls.ProjectService + 'projects/' + id + '/').then(handleSuccess, handleError('Error deleting project'));
   }
 
   // private functions
@@ -44,7 +44,13 @@ function ProjectService($http, ServiceUrls) {
   }
 
   function handleError(error) {
-    return function () {
+    return function (res) {
+      if (Object.keys(res.data).length) {
+        var resDataFirstProp = res.data[Object.keys(res.data)[0]];
+        if (resDataFirstProp.length) {
+          error = resDataFirstProp[0];
+        }
+      }
       return { success: false, message: error };
     };
   }

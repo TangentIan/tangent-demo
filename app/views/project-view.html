@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-10"><h3>View project</h3></div>
+  <p class="col-md-2 text-right"><a href="#/" class="btn btn-default btn-form">Back</a></p>
+</div>
+<div class="list-group">
+  <div class="list-group-item">
+    <h4 class="list-group-item-heading">{{vm.project.title}}</h4>
+    <p class="list-group-item-text">
+      <dl class="dl-horizontal">
+        <dt>Description</dt><dd>{{vm.project.description}}</dd>
+        <dt>Start date</dt><dd>{{vm.project.start_date}}</dd>
+        <dt>End date</dt><dd>{{vm.project.end_date}}</dd>
+        <dt>Active</dt><dd><input type="checkbox" ng-model="vm.project.is_active" disabled></dd>
+        <dt>Billable</dt><dd><input type="checkbox" ng-model="vm.project.is_billable" disabled></dd>
+      </dl>
+
+      <button ng-click="vm.editProject(vm.project.pk)" type="button" ng-disabled="vm.dataLoading" class="btn btn-primary">Edit</button>
+      <button type="button" ng-disabled="vm.dataLoading" class="btn btn-default" data-toggle="modal" data-target="#confirm-delete">Delete</button>
+      <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+
+    </p>
+  </div>
+</div>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm delete</h3>
+            </div>
+            <div class="modal-body">
+                Are you sure?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a ng-click="vm.deleteProject(vm.project.pk)" class="btn btn-danger btn-ok" data-dismiss="modal">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
