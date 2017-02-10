@@ -21,6 +21,17 @@ describe('Component: Project Add', function () {
     httpMock = $httpBackend;
   }));
 
-  // @todo:
+  // Unit tests
+
+  it('should add an add project method to the controller', function () {
+    expect(controller.addProject).toBeDefined();
+  });
+
+  it('should call the add project method when the form is submitted', function () {
+    var form = element.find('form');
+    spyOn(controller, 'addProject');
+    form.triggerHandler('submit');
+    expect(controller.addProject).toHaveBeenCalled();
+  });
 
 });
